@@ -57,10 +57,10 @@ namespace HybridWebView9Bug
 
                 //SEE https://github.com/dotnet/maui/issues/22303 other NORMAL functions should still work but don't
                 //var result = await hybridWebView.InvokeJavaScriptAsync<string>("setBackgroundRandomColor", null);
-                var result = await hybridWebView.InvokeJavaScriptAsync<string>("setBackgroundRandomColor", HybridSampleJSContext.Default.String);
+                var result = await hybridWebView.InvokeJavaScriptAsync("setBackgroundRandomColor", HybridSampleJSContext.Default.DictionaryStringString);
                 //var result = hybridWebView.InvokeJavaScriptAsync("setBackgroundRandomColor");
 
-                Debug.WriteLine("INVOKED");
+                Debug.WriteLine("INVOKED, got back: " + string.Join("; ", result.Select(kvp => $"[{kvp.Key}]={kvp.Value}")));
             };
             hor.Add(changeColorButton);
 
@@ -69,8 +69,8 @@ namespace HybridWebView9Bug
             getColorButton.Text = "get color string";
             getColorButton.Clicked += async delegate {
                 Debug.WriteLine("CLICKED");
-                var result = await hybridWebView.InvokeJavaScriptAsync<string>("getRandomHexColor", null);
-                Debug.WriteLine("INVOKED");
+                var result = await hybridWebView.InvokeJavaScriptAsync("getRandomHexColor", HybridSampleJSContext.Default.String);
+                Debug.WriteLine("INVOKED, got back: " + result);
             };
             hor.Add(getColorButton);
 

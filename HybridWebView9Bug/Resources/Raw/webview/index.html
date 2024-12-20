@@ -19,12 +19,12 @@
 		//functions to invoke from Maui
 		function getRandomHexColor(){
 			const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-			return '#' + randomColor.padStart(6, '0');
+			return '\"#' + randomColor.padStart(6, '0') + '\"';
 		}
 		function setBackgroundRandomColor(){
 			let randomColor = getRandomHexColor();
 			document.body.style.backgroundColor = randomColor;
-			return '[{"result": "okay"}]';
+			return '{"result": "okay"}';
 		}
 
 	</script>
