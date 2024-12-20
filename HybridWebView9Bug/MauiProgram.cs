@@ -17,6 +17,7 @@ namespace HybridWebView9Bug
 
 #if DEBUG
     		builder.Logging.AddDebug();
+            builder.Services.AddHybridWebViewDeveloperTools();
 #endif
 
             return builder.Build();
